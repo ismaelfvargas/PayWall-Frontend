@@ -1,0 +1,32 @@
+<h1 class="mt-3">Pagamentos</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-md-6">
+          <label for="inputNomeFornecedor">Nome Fornecedor:</label>
+          <input type="text" [(ngModel)]="solicitacao.nomeFornecedor"
+                  name="nomeFornecedor" class="form-control"
+                  id="inputNomeFornecedor">
+      </div>
+      <div class="col-md-6">
+        <label for="inputNomeFornecedor">Data de Emissão:</label>
+        <input type="date" [(ngModel)]="solicitacao.dataEmissao"
+               name="dataEmissao" class="form-control"
+               id="inputDataEmissao">
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-md-3">
+          <button type="submit" class="btn btn-primary">
+              <i class="fa fa-search"></i> Consultar
+          </button>
+      </div>
+    </div>
+  </form>
+</div>
