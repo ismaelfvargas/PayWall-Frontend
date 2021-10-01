@@ -17,13 +17,13 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Data de Emissão: *</label>
-          <input type="date" class="form-control" name="dataEmissao" [(ngModel)]="pagamento.solicitacao.dataEmissao" />
+          <input type="date" class="form-control" name="dataEmissao" [(ngModel)]="pagamento.dataEmissao" />
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label>Data de Vencimento: *</label>
-          <input type="date" class="form-control" name="dataVencimento" [(ngModel)]="pagamento.solicitacao.dataVencimento" />
+          <input type="date" class="form-control" name="dataVencimento" [(ngModel)]="pagamento.dataVencimento" />
         </div>
       </div>
     </div>
@@ -31,13 +31,13 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Nome do Fornecedor: *</label>
-          <input type="text" class="form-control" name="nomeFornecedor" [(ngModel)]="pagamento.solicitacao.nomeFornecedor" />
+          <input type="text" class="form-control" name="nomeFornecedor" [(ngModel)]="pagamento.nomeFornecedor" />
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label>Observação:</label>
-          <input type="text" class="form-control" name="observacao" [(ngModel)]="pagamento.solicitacao.observacao" />
+          <input type="text" class="form-control" name="observacao" [(ngModel)]="pagamento.observacao" />
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Desconto:</label>
-          <input type="number" class="form-control" name="valorBruto" [(ngModel)]="pagamento.solicitacao.desconto" />
+          <input type="number" class="form-control" name="valorBruto" [(ngModel)]="pagamento.desconto" />
         </div>
       </div>
       <div class="col-md-6">
@@ -61,14 +61,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Valor Bruto:</label>
-          <input type="number" class="form-control" name="valorBruto" [(ngModel)]="pagamento.solicitacao.valorBruto" />
+          <input type="number" class="form-control" name="valorBruto" [(ngModel)]="pagamento.valorBruto" />
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
           <label>Valor Líquido: *</label>
-          <input type="number" class="form-control" name="valorLiquido" [(ngModel)]="pagamento.solicitacao.valorLiquido" />
+          <input type="number" class="form-control" name="valorLiquido" [(ngModel)]="pagamento.valorLiquido" />
         </div>
       </div>
 
@@ -96,24 +96,24 @@
               <label style="top: 32px;" class="custom-file-label" for="inputGroupFile01">Escolher arquivo</label>
             </div>
 
-<!--            <button-->
-<!--              class="btn btn-success" style="margin-top: 15px; width: 80px;"-->
-<!--              [disabled]="!pagamento.selectedFiles"-->
-<!--              (click)="uploadFiles()"-->
-<!--            >-->
-<!--              Upload-->
-<!--            </button>-->
+            <!--            <button-->
+            <!--              class="btn btn-success" style="margin-top: 15px; width: 80px;"-->
+            <!--              [disabled]="!pagamento.selectedFiles"-->
+            <!--              (click)="uploadFiles()"-->
+            <!--            >-->
+            <!--              Upload-->
+            <!--            </button>-->
 
             <div *ngFor="let progressInfo of pagamento.progressInfos" class="mb-2" style="margin-top: 10px">
               <span>{{ progressInfo.fileName }}</span>
               <div class="progress">
                 <div style="background-color: #3fc34f"
-                  class="progress-bar progress-bar-striped progress-bar-animated"
-                  role="progressbar"
-                  aria-valuenow="{{ progressInfo.value }}"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  [ngStyle]="{ width: progressInfo.value + '%' }"
+                     class="progress-bar progress-bar-striped progress-bar-animated"
+                     role="progressbar"
+                     aria-valuenow="{{ progressInfo.value }}"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     [ngStyle]="{ width: progressInfo.value + '%' }"
                 >
                   {{ progressInfo.value }}%
                 </div>
@@ -127,22 +127,22 @@
       </div>
 
 
-<!--      <div class="col-md-6">-->
-<!--        <div class="form-group">-->
-<!--          <label>Documentos Anexados: </label>-->
-<!--          <div class="card">-->
-<!--            <div class="card-header">List of Files</div>-->
-<!--            <ul-->
-<!--              class="list-group list-group-flush"-->
-<!--              *ngFor="let file of pagamento.fileInfos | async"-->
-<!--            >-->
-<!--              <li class="list-group-item">-->
-<!--                <a href="{{ file.url }}">{{ file.name }}</a>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="col-md-6">-->
+      <!--        <div class="form-group">-->
+      <!--          <label>Documentos Anexados: </label>-->
+      <!--          <div class="card">-->
+      <!--            <div class="card-header">List of Files</div>-->
+      <!--            <ul-->
+      <!--              class="list-group list-group-flush"-->
+      <!--              *ngFor="let file of pagamento.fileInfos | async"-->
+      <!--            >-->
+      <!--              <li class="list-group-item">-->
+      <!--                <a href="{{ file.url }}">{{ file.name }}</a>-->
+      <!--              </li>-->
+      <!--            </ul>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
 
     </div>
 

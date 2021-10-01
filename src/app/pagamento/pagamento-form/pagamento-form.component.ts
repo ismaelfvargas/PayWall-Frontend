@@ -18,7 +18,6 @@ export class PagamentoFormComponent implements OnInit {
 
   constructor( private pagamentosService: PagamentosService, private uploadFileService: UploadFileService) {
     this.pagamento = new Pagamento();
-    this.pagamento.solicitacao = new Solicitacao();
   }
 
   ngOnInit(): void {
@@ -30,9 +29,8 @@ export class PagamentoFormComponent implements OnInit {
     this.pagamentosService
       .salvar(this.pagamento)
       .subscribe( response => {
-        console.log(response.solicitacao.id);
         this.success = true;
-        this.uploadFiles(response.solicitacao.id);
+        this.uploadFiles(response.id);
       } );
   }
 

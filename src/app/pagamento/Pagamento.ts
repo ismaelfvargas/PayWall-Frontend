@@ -5,7 +5,14 @@ import {PagamentosService} from "../pagamentos.service";
 export class Pagamento {
   id: number;
   tributo: string;
-  solicitacao: Solicitacao;
+  nomeFornecedor: string;
+  dataCadastro: string;
+  dataEmissao: string;
+  dataVencimento: string;
+  observacao: string;
+  valorLiquido: number;
+  valorBruto: number;
+  desconto: number;
 
   selectedFiles: FileList;
   progressInfos = [];
