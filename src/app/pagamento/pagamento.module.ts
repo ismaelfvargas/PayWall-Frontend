@@ -6,12 +6,14 @@ import { PagamentoRoutingModule } from './pagamento-routing.module';
 import { PagamentoFormComponent } from './pagamento-form/pagamento-form.component';
 import { PagamentoListaComponent } from './pagamento-lista/pagamento-lista.component';
 import {RouterModule} from "@angular/router";
+import { AdiantamentosFormComponent } from './adiantamentos-form/adiantamentos-form.component';
 
 
 @NgModule({
   declarations: [
     PagamentoFormComponent,
-    PagamentoListaComponent
+    PagamentoListaComponent,
+    AdiantamentosFormComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import {RouterModule} from "@angular/router";
     RouterModule
   ], exports: [
     PagamentoFormComponent,
-    PagamentoListaComponent
+    PagamentoListaComponent,
+    AdiantamentosFormComponent
   ]
 })
 export class PagamentoModule { }

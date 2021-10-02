@@ -1,0 +1,161 @@
+<h1 class="mt-3">Formulário de Solicitação de Adiantameto</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastrar Solicitação de Adiantameto</li>
+</ol>
+<div class="container">
+  <form #adiantamentoForm="ngForm" (ngSubmit)="onSubmit()" >
+
+    <div class="row">
+      <div class="col-md-14">
+        <div class="alert alert-success" role="alert" *ngIf="success == true" >
+          Solicitação salva com sucesso!
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Data de Emissão: *</label>
+          <input type="date" class="form-control" name="dataEmissao" [(ngModel)]="pagamento.dataEmissao" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Data de Vencimento: *</label>
+          <input type="date" class="form-control" name="dataVencimento" [(ngModel)]="pagamento.dataVencimento" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nome do Fornecedor: *</label>
+          <input type="text" class="form-control" name="nomeFornecedor" [(ngModel)]="pagamento.nomeFornecedor" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Observação:</label>
+          <input type="text" class="form-control" name="observacao" [(ngModel)]="pagamento.observacao" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Desconto:</label>
+          <input type="number" class="form-control" name="valorBruto" [(ngModel)]="pagamento.desconto" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Tributos:</label>
+          <input type="number" class="form-control" name="blank" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Valor Bruto:</label>
+          <input type="number" class="form-control" name="valorBruto" [(ngModel)]="pagamento.valorBruto" />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Valor Líquido: *</label>
+          <input type="number" class="form-control" name="valorLiquido" [(ngModel)]="pagamento.valorLiquido" />
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Centro de Custos: *</label>
+          <select class="custom-select" multiple>
+            <option value="1">Controladoria</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="custom-file">
+
+            <div>
+              <span>Anexar Documentos: *</span>
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" multiple (change)="selectFiles($event)" />
+              <label style="top: 32px;" class="custom-file-label" for="inputGroupFile01">Escolher arquivo</label>
+            </div>
+
+            <!--            <button-->
+            <!--              class="btn btn-success" style="margin-top: 15px; width: 80px;"-->
+            <!--              [disabled]="!pagamento.selectedFiles"-->
+            <!--              (click)="uploadFiles()"-->
+            <!--            >-->
+            <!--              Upload-->
+            <!--            </button>-->
+
+            <div *ngFor="let progressInfo of pagamento.progressInfos" class="mb-2" style="margin-top: 10px">
+              <span>{{ progressInfo.fileName }}</span>
+              <div class="progress">
+                <div style="background-color: #3fc34f"
+                     class="progress-bar progress-bar-striped progress-bar-animated"
+                     role="progressbar"
+                     aria-valuenow="{{ progressInfo.value }}"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     [ngStyle]="{ width: progressInfo.value + '%' }"
+                >
+                  {{ progressInfo.value }}%
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-light" role="alert">{{ pagamento.message }}</div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!--      <div class="col-md-6">-->
+      <!--        <div class="form-group">-->
+      <!--          <label>Documentos Anexados: </label>-->
+      <!--          <div class="card">-->
+      <!--            <div class="card-header">List of Files</div>-->
+      <!--            <ul-->
+      <!--              class="list-group list-group-flush"-->
+      <!--              *ngFor="let file of pagamento.fileInfos | async"-->
+      <!--            >-->
+      <!--              <li class="list-group-item">-->
+      <!--                <a href="{{ file.url }}">{{ file.name }}</a>-->
+      <!--              </li>-->
+      <!--            </ul>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+
+    </div>
+
+    <div class="row" style="margin-top: 72px">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success btn-block"
+                [disabled]="!pagamento.selectedFiles"
+        >
+          <i class="far fa-check-square"></i>
+          Salvar
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>

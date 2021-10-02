@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AdiantamentosFormComponent} from "./adiantamentos-form/adiantamentos-form.component";
 import {LayoutComponent} from "../layout/layout.component";
+import {UsuariosFormComponent} from "./usuarios-form/usuarios-form.component";
 
 const routes: Routes = [
   { path: '' , component: LayoutComponent, children: [
-  { path: 'adiantamentos-form' , component: AdiantamentosFormComponent}
-  ]}
+      { path: 'usuarios-form', component: UsuariosFormComponent }
+    ]}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdiantamentosRoutingModule { }
+export class UsuariosRoutingModule { }
