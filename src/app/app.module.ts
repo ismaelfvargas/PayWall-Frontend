@@ -13,11 +13,10 @@ import { SolicitacoesService } from './solicitacoes.service';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PagamentoModule } from "./pagamento/pagamento.module";
-import {AdiantamentosModule} from "./adiantamentos/adiantamentos.module";
 import {PagamentosService} from "./pagamentos.service";
-import {AdiantamentosService} from "./adiantamentos.service";
 import {AuthService} from "./auth.service";
 import {UploadFileService} from "./upload-file.service";
+import {UsuariosModule} from "./usuarios/usuarios.module";
 
 @NgModule({
   declarations: [
@@ -34,12 +33,11 @@ import {UploadFileService} from "./upload-file.service";
     TemplateModule,
     SolicitacoesModule,
     PagamentoModule,
-    AdiantamentosModule
+    UsuariosModule
   ],
   providers: [
     SolicitacoesService,
     PagamentosService,
-    AdiantamentosService,
     AuthService,
     UploadFileService
   ],

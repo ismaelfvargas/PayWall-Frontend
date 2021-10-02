@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import { Usuario } from "./usuario";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../../auth.service";
+import {Usuario} from "../../login/usuario";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-usuarios-form',
+  templateUrl: './usuarios-form.component.html',
+  styleUrls: ['./usuarios-form.component.css']
 })
-
-export class LoginComponent {
+export class UsuariosFormComponent implements OnInit {
 
   username: string;
   password: string;
@@ -21,6 +20,10 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthService
   ) { }
+
+  ngOnInit(): void {
+
+  }
 
   onSubmit(){
     this.router.navigate(['/home'])
