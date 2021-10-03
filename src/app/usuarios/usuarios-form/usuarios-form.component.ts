@@ -14,7 +14,7 @@ export class UsuariosFormComponent implements OnInit {
   password: string;
   cadastrando: boolean;
   mensagemSucesso: string;
-  errors: string[];
+  menssagemErro: string;
 
   constructor(
     private router: Router,
@@ -46,9 +46,13 @@ export class UsuariosFormComponent implements OnInit {
       .salvar(usuario)
       .subscribe( response => {
         this.mensagemSucesso = "Cadastro realizado com sucesso!"
+        this.menssagemErro = null;
+        this.username = '';
+        this.password = '';
       }, errorResponse => {
         this.mensagemSucesso = null;
-        this.errors = errorResponse.error.errors;
+        this.menssagemErro = "Esse usuário já possui login!"
+        return this.menssagemErro;
       });
   }
 
