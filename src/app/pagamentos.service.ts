@@ -13,8 +13,11 @@ export class PagamentosService {
   }
 
   salvar( pagamento: Pagamento ): Observable<Pagamento> {
-    console.log(pagamento);
-    return this.http.post<Pagamento>('http://localhost:8080/api/pagamentos' , pagamento);
+    const token = JSON.parse(localStorage.getItem('access_token') || '{}')
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.post<Pagamento>('http://localhost:8080/api/pagamentos' , pagamento, {headers});
   }
 
   /*
