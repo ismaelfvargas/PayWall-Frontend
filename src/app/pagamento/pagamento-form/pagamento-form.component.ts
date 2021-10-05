@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Solicitacao } from "../../solicitacoes/solicitacao";
-import { SolicitacoesService } from "../../solicitacoes.service";
 import { PagamentosService } from "../../pagamentos.service";
 import { Pagamento } from "../Pagamento";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
@@ -25,7 +23,6 @@ export class PagamentoFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.pagamento);
     this.pagamentosService
       .salvar(this.pagamento)
       .subscribe( response => {
