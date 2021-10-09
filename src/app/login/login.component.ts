@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import { Usuario } from "./usuario";
 import {AuthService} from "../auth.service";
+import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   username: string;
   password: string;
@@ -17,10 +18,18 @@ export class LoginComponent {
   mensagemSucesso: string;
   errors: string[];
 
+  public backgroundImg: SafeStyle;
+  @Input() myObject: any;
+
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer:DomSanitizer
   ) { }
+
+  ngOnInit() {
+    this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(' + "../../../assets/img/imageLogin.png" + ')');
+  }
 
   onSubmit(){
 
@@ -29,9 +38,9 @@ export class LoginComponent {
           .subscribe(response => {
             const access_token = JSON.stringify(response);
             localStorage.setItem('access_token', access_token)
-            this.router.navigate(['/home'])
+            this.router.navigate(['/'])
           }, errorResponse => {
-              this.errors = ['Usuário e/ou seha incorreto(s).']
+              this.errors = ['Usuário e/ou senha incorreto(s).']
           })
 
   }
