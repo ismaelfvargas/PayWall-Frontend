@@ -1,13 +1,13 @@
-<div style="background-color: #004597">
+<div *ngIf="backgroundImg" [style.background-image]="backgroundImg">
   <div id="layoutAuthentication">
       <div id="layoutAuthentication_content">
           <main>
               <div class="container">
                   <div class="row justify-content-center">
-                      <div class="col-lg-5">
+                      <div class="col-lg-5" style="margin-top: 271px">
                           <div class="card shadow-lg border-0 rounded-lg mt-5 ">
-                              <div class="card-header">
-                                  <h3 class="text-center font-weight-light my-4" >
+                              <div class="card-header" style="background-color: #34385d">
+                                  <h3 class="text-center font-weight-light my-4" style="color: aliceblue" >
                                     Entrar
                                   </h3>
                               </div>
@@ -27,8 +27,8 @@
                                             <label class="small mb-1">Senha</label>
                                             <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Digite sua senha"/>
                                         </div>
-                                        <div class="form-group align-items-center justify-content-between mt-4 mb-0">
-                                              <button type="submit" class="btn btn-primary btn-block">
+                                        <div class="form-group align-items-center justify-content-between mt-4 mb-0" style="color: #3c454e">
+                                              <button type="submit" class="btn btn-primary btn-block" style="background-color: #34385d; border-color: #1d2124">
                                                 Enviar
                                               </button>
                                         </div>
