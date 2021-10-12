@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -18,15 +18,10 @@ export class UploadFileService {
     formData.append('file', file);
     formData.append('idSolicitacao', idSolicitacao.toString());
 
-    const token = JSON.parse(localStorage.getItem('access_token') || '{}')
-    const headers = {
-      'Authorization' : 'Bearer ' + token.access_token
-    }
 
     const req = new HttpRequest('POST', `http://localhost:8080/upload`, formData, {
       reportProgress: true,
-      responseType: 'json',
-      headers: new HttpHeaders(headers)
+      responseType: 'json'
     });
 
     return this.http.request(req);
