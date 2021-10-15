@@ -16,23 +16,4 @@ export class PagamentosService {
 
     return this.http.post<Pagamento>('http://localhost:8080/api/pagamentos' , pagamento);
   }
-
-  /*
-  upload(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
-
-    formData.append('file', file);
-
-    const req = new HttpRequest('POST', `http://localhost:8080/upload`, formData, {
-      reportProgress: true,
-      responseType: 'json'
-    });
-
-    return this.http.request(req);
-  }
-
-  getFiles(): Observable<any> {
-    return this.http.get(`http://localhost:8080/files`);
-  }
-  */
 }

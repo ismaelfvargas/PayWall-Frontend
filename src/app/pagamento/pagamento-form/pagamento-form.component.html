@@ -12,6 +12,22 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Tipo de Solicitação: *</label>
+          <select class="form-control"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="pagamento.idTipoPedido">
+          >
+              <option value="">Selecione ...</option>
+              <option *ngFor="let tipoPedidos of tipoPedido" [ngValue]="tipoPedidos.id">
+                  {{ tipoPedidos.nomePedido }}
+              </option>
+          </select>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-md-6">
