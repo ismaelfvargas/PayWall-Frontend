@@ -18,6 +18,7 @@ import {AuthService} from "./auth.service";
 import {UploadFileService} from "./upload-file.service";
 import {UsuariosModule} from "./usuarios/usuarios.module";
 import {TokenInterceptor} from "./token.interceptor";
+import {TipoPedidoService} from "./tipoPedido.service";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {TokenInterceptor} from "./token.interceptor";
     PagamentosService,
     AuthService,
     UploadFileService,
+    TipoPedidoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Solicitacao} from "../../solicitacoes/solicitacao";
+import {PagamentosService} from "../../pagamentos.service";
+import {UploadFileService} from "../../upload-file.service";
+import {TipoPedidoService} from "../../tipoPedido.service";
+import {Pagamento} from "../Pagamento";
+import {TipoPedido} from "../TipoPedido";
 
 @Component({
   selector: 'app-pagamento-lista',
@@ -8,19 +13,19 @@ import {Solicitacao} from "../../solicitacoes/solicitacao";
 })
 export class PagamentoListaComponent implements OnInit {
 
-  tributo: string;
-  solicitacao: Solicitacao;
+  pagamento : Pagamento;
+  tipoPedido : TipoPedido[] = [];
 
-
-  constructor() {
-
-  }
+  constructor( private pagamentosService: PagamentosService,
+               private uploadFileService: UploadFileService,
+               private tipoPedidoService: TipoPedidoService
+             ) {}
 
   ngOnInit(): void {
-  }
-
-  consultar(){
-    console.log(this.solicitacao.dataEmissao, this.solicitacao.nomeFornecedor);
+    this.pagamento.fileInfos = this.uploadFileService.getFiles();
+    this.tipoPedidoService
+      .getTipoPedido()
+      .subscribe( response => this.tipoPedido = response )
   }
 
 }
