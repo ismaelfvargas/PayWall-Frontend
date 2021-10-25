@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Solicitacao} from "../../solicitacoes/solicitacao";
 import {PagamentosService} from "../../pagamentos.service";
 import {UploadFileService} from "../../upload-file.service";
 import {TipoPedidoService} from "../../tipoPedido.service";

@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 
 import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
-import { SolicitacoesModule } from './solicitacoes/solicitacoes.module';
-import { SolicitacoesService } from './solicitacoes.service';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PagamentoModule } from "./pagamento/pagamento.module";
@@ -19,6 +17,7 @@ import {UploadFileService} from "./upload-file.service";
 import {UsuariosModule} from "./usuarios/usuarios.module";
 import {TokenInterceptor} from "./token.interceptor";
 import {TipoPedidoService} from "./tipoPedido.service";
+import {TipoStatusService} from "./tipoStatus.service";
 
 @NgModule({
   declarations: [
@@ -33,16 +32,15 @@ import {TipoPedidoService} from "./tipoPedido.service";
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
-    SolicitacoesModule,
     PagamentoModule,
     UsuariosModule
   ],
   providers: [
-    SolicitacoesService,
     PagamentosService,
     AuthService,
     UploadFileService,
     TipoPedidoService,
+    TipoStatusService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

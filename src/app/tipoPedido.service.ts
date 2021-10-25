@@ -27,7 +27,7 @@ export class TipoPedidoService {
     return this.http.get<any>(`http://localhost:8080/api/tipoPedido/${id}`)
   }
 
-  atualizar( cliente: TipoPedido ) : Observable<any> {
-    return this.http.put<TipoPedido>(`${this.apiURL}/${cliente.id}` , cliente);
+  atualizar( tipoPedido: TipoPedido ) : Observable<any> {
+    return this.http.put<TipoPedido>(`${this.apiURL}/${tipoPedido.id}` , tipoPedido);
   }
 }

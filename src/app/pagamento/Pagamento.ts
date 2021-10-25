@@ -11,6 +11,7 @@ export class Pagamento {
   valorBruto: number;
   desconto: number;
   idTipoPedido: number;
+  idTipoStatus: number;
 
 
   selectedFiles: FileList;
