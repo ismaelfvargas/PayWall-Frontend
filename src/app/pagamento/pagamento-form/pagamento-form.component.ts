@@ -3,8 +3,10 @@ import { PagamentosService } from "../../pagamentos.service";
 import { Pagamento } from "../Pagamento";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
 import { UploadFileService } from "../../upload-file.service";
-import {TipoPedido} from "../TipoPedido";
-import {TipoPedidoService} from "../../tipoPedido.service";
+import { TipoPedido } from "../TipoPedido";
+import { TipoPedidoService } from "../../tipoPedido.service";
+import { TipoStatus } from "../TipoStatus";
+import { TipoStatusService } from "../../tipoStatus.service";
 
 @Component({
   selector: 'app-pagamento-form',
@@ -16,10 +18,12 @@ export class PagamentoFormComponent implements OnInit {
   pagamento: Pagamento;
   success: boolean = false;
   tipoPedido: TipoPedido[] = [];
+  tipoStatus: TipoStatus[] = [];
 
   constructor( private pagamentosService: PagamentosService,
                private uploadFileService: UploadFileService,
-               private tipoPedidoService: TipoPedidoService
+               private tipoPedidoService: TipoPedidoService,
+               private tipoStatusService: TipoStatusService
               )
     {
       this.pagamento = new Pagamento();
@@ -30,6 +34,9 @@ export class PagamentoFormComponent implements OnInit {
     this.tipoPedidoService
       .getTipoPedido()
       .subscribe( response => this.tipoPedido = response );
+    this.tipoStatusService
+      .getTipoStatus()
+      .subscribe(response => this.tipoStatus = response );
   }
 
   onSubmit(){
