@@ -56,6 +56,10 @@ export class PagamentoFormComponent implements OnInit {
   uploadFiles(idSolicitacao): void {
     this.pagamento.message = '';
 
+    console.log(this.pagamento.selectedFiles.length)
+    console.log('id_solicitacao')
+    console.log(idSolicitacao)
+
     for (let i = 0; i < this.pagamento.selectedFiles.length; i++) {
       this.upload(i, this.pagamento.selectedFiles[i], idSolicitacao);
     }
