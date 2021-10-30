@@ -110,12 +110,9 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Centro de Custos: *</label>
-          <select class="custom-select" multiple>
-            <option value="1">Controladoria</option>
-          </select>
+          <input type="text" class="form-control" name="observacao" [(ngModel)]="pagamento.centroDeCusto" />
         </div>
       </div>
-
 
       <div class="col-md-6">
         <div class="form-group">

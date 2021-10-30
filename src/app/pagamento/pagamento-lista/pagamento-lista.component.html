@@ -3,19 +3,19 @@
   <li class="breadcrumb-item active">Consulta</li>
 </ol>
 <div class="container">
-  <form>
+  <form #consultarForm="ngForm" (submit)="consultar()">
     <div class="row">
       <div class="col-md-6">
-          <label for="inputNomeFornecedor">Tipo da Solicitação:</label>
-          <input type="text" [(ngModel)]="pagamento.nomeFornecedor"
+          <label for="inputNomeFornecedor">Nome do Fornecedor:</label>
+          <input type="text" [(ngModel)]="nomeFornecedor"
                   name="nomeFornecedor" class="form-control"
                   id="inputNomeFornecedor">
       </div>
       <div class="col-md-6">
-        <label for="inputNomeFornecedor">Data de Emissão:</label>
-        <input type="date" [(ngModel)]="pagamento.dataEmissao"
-               name="dataEmissao" class="form-control"
-               id="inputDataEmissao">
+        <label for="inputTipoPedido">Status da Solicitação:</label>
+        <input type="text" [(ngModel)]="nomeStatus"
+               name="tipoPedido" class="form-control"
+               id="inputTipoPedido">
       </div>
     </div>
 
@@ -29,4 +29,42 @@
       </div>
     </div>
   </form>
+
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+          <thead>
+              <tr>
+                <th>Tipo de Solicitação</th>
+                <th>Status da Solicitação</th>
+                <th>Data de Emissão</th>
+                <th>Data de Vencimento</th>
+                <th>Nome Fornecedor</th>
+                <th>Observação</th>
+                <th>Desconto</th>
+                <th>Tributos</th>
+                <th>Valor Bruto</th>
+                <th>Valor Liquido</th>
+                <th>Centro de Custos</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let s of lista">
+                <td> {{s.tipoPedido.nomePedido}} </td>
+                <td> {{s.tipoStatus.nomeStatus}} </td>
+                <td> {{s.dataEmissao}} </td>
+                <td> {{s.dataVencimento}} </td>
+                <td> {{s.nomeFornecedor}} </td>
+                <td> {{s.observacao}} </td>
+                <td> {{s.desconto}} </td>
+                <td> {{s.tributo}} </td>
+                <td> {{s.valorBruto}} </td>
+                <td> {{s.valorLiquido}} </td>
+                <td> {{s.centroDeCusto}} </td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
 </div>

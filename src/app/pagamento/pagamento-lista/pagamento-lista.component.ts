@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PagamentoBusca} from "./pagamentoBusca";
 import {PagamentosService} from "../../pagamentos.service";
-import {UploadFileService} from "../../upload-file.service";
-import {TipoPedidoService} from "../../tipoPedido.service";
-import {Pagamento} from "../Pagamento";
-import {TipoPedido} from "../TipoPedido";
 
 @Component({
   selector: 'app-pagamento-lista',
@@ -12,19 +9,22 @@ import {TipoPedido} from "../TipoPedido";
 })
 export class PagamentoListaComponent implements OnInit {
 
-  pagamento : Pagamento;
-  tipoPedido : TipoPedido[] = [];
+  nomeFornecedor: string;
+  nomeStatus: string;
+  lista: PagamentoBusca[];
 
-  constructor( private pagamentosService: PagamentosService,
-               private uploadFileService: UploadFileService,
-               private tipoPedidoService: TipoPedidoService
-             ) {}
+  constructor(
+      private service: PagamentosService
+  ) {}
 
   ngOnInit(): void {
-    this.pagamento.fileInfos = this.uploadFileService.getFiles();
-    this.tipoPedidoService
-      .getTipoPedido()
-      .subscribe( response => this.tipoPedido = response )
+
+  }
+
+  consultar(){
+    this.service
+      .buscar(this.nomeFornecedor, this.nomeStatus)
+      .subscribe(response => this.lista = response);
   }
 
 }
