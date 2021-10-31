@@ -10,6 +10,7 @@ export class Pagamento {
   valorLiquido: number;
   valorBruto: number;
   desconto: number;
+  centroDeCusto: string;
   idTipoPedido: number;
   idTipoStatus: number;
 
