@@ -20,11 +20,15 @@
                 <form #loginForm="ngForm" (submit)="onSubmit();">
                   <div class="form-group">
                     <label class="small mb-1" style="color: #082B58; font-size: 15px">Login</label>
-                    <input type="text" name="username" [(ngModel)]="username" autocomplete="off" class="form-control py-4" placeholder="Digite seu login"/>
+                    <input type="text" name="username" [(ngModel)]="username" autocomplete="off" class="form-control py-4" placeholder="Digite o login"/>
                   </div>
                   <div class="form-group">
                     <label class="small mb-1" style="color: #082B58; font-size: 15px">Senha</label>
-                    <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Digite sua senha"/>
+                    <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Digite a senha"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="small mb-1" style="color: #082B58; font-size: 15px">Perfil de usuário</label>
+                    <input type="text" name="roles" [(ngModel)]="roles" class="form-control py-4" placeholder="Digite o perfil do usuário"/>
                   </div>
                   <div class="form-group align-items-center justify-content-between mt-4 mb-0 text-center">
 

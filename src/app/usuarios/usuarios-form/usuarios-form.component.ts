@@ -12,6 +12,7 @@ export class UsuariosFormComponent implements OnInit {
 
   username: string;
   password: string;
+  roles: string;
   cadastrando: boolean;
   mensagemSucesso: string;
   menssagemErro: string;
@@ -42,6 +43,7 @@ export class UsuariosFormComponent implements OnInit {
     const usuario: Usuario = new Usuario();
     usuario.username = this.username;
     usuario.password = this.password;
+    usuario.roles = this.roles;
     this.authService
       .salvar(usuario)
       .subscribe( response => {
@@ -49,6 +51,7 @@ export class UsuariosFormComponent implements OnInit {
         this.menssagemErro = null;
         this.username = '';
         this.password = '';
+        this.roles = '';
       }, errorResponse => {
         this.mensagemSucesso = null;
         this.menssagemErro = "Esse usuário já possui login!"
