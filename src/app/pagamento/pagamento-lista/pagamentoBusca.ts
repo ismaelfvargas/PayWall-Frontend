@@ -1,5 +1,6 @@
 import {TipoPedido} from "../TipoPedido";
 import {TipoStatus} from "../TipoStatus";
+import {Usuario} from "../../login/usuario";
 
 export class PagamentoBusca {
   tributo: string;
@@ -13,4 +14,5 @@ export class PagamentoBusca {
   centroDeCusto: string;
   tipoPedido: TipoPedido;
   tipoStatus: TipoStatus;
+  usuario: Usuario;
 }

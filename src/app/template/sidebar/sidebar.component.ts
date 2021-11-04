@@ -9,6 +9,7 @@ import {AuthService} from "../../auth.service";
 export class SidebarComponent implements OnInit {
 
   usuarioLogado: string;
+  permissaoUsuario: boolean;
 
   constructor(
     private authService: AuthService
@@ -16,6 +17,13 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioLogado = this.authService.getUsuarioAutenticado();
+    this.permissaoUsuario = false;
+    this.authService
+      .permissaoUsuariosMenu()
+      .subscribe(response => {
+        this.permissaoUsuario = true;
+      })
   }
+
 
 }

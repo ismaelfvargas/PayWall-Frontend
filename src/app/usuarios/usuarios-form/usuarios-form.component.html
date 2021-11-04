@@ -26,9 +26,30 @@
                     <label class="small mb-1" style="color: #082B58; font-size: 15px">Senha</label>
                     <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Digite a senha"/>
                   </div>
+<!--                  <div class="form-group">-->
+<!--                    <label class="small mb-1" style="color: #082B58; font-size: 15px">Perfil de usuário</label>-->
+<!--                    <input type="text" name="roles" [(ngModel)]="roles" class="form-control py-4" placeholder="Digite o perfil do usuário"/>-->
+<!--                  </div>-->
                   <div class="form-group">
-                    <label class="small mb-1" style="color: #082B58; font-size: 15px">Perfil de usuário</label>
-                    <input type="text" name="roles" [(ngModel)]="roles" class="form-control py-4" placeholder="Digite o perfil do usuário"/>
+                    <label class="small mb-1" style="color: #082B58; font-size: 15px">Selecione o perfil do usuário</label>
+                    <select class="form-control" name="select" [(ngModel)]="roles">
+                      <option value="USUARIO">USUARIO</option>
+                      <option value="ASSISTENTE">ASSISTENTE</option>
+                      <option value="COORDENADOR">COORDENADOR</option>
+                      <option value="GERENTE">GERENTE</option>
+                      <option value="DIRETOR">DIRETOR</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="small mb-1" style="color: #082B58; font-size: 15px">Selecione a área do usuário</label>
+                    <select class="form-control" name="select" [(ngModel)]="area">
+                      <option value="TECNOLOGIA DA INFORMAÇÃO">TECNOLOGIA DA INFORMAÇÃO</option>
+                      <option value="COMERCIAL E MARKETING">COMERCIAL E MARKETING</option>
+                      <option value="FINANCEIRO E CONTROLADORIA">FINANCEIRO E CONTROLADORIA</option>
+                      <option value="DHO">DHO</option>
+                      <option value="ÁREA OPERACIONAL">ÁREA OPERACIONAL</option>
+                      <option value="DIRETORIA">DIRETORIA</option>
+                    </select>
                   </div>
                   <div class="form-group align-items-center justify-content-between mt-4 mb-0 text-center">
 
