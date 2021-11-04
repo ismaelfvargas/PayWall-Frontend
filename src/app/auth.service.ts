@@ -75,4 +75,12 @@ export class AuthService {
 
     return this.http.post(this.tokenURL, params.toString(), { headers })
   }
+
+  permissaoUsuariosMenu() : Observable<any> {
+    const token = JSON.parse(localStorage.getItem('access_token') || '{}')
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.get<any>('http://localhost:8080/api/usuarios/permissao/menu' , {headers});
+  }
 }

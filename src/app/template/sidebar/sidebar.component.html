@@ -18,23 +18,22 @@
           <div class="sb-nav-link-icon"><i class="fas fa-file-invoice-dollar"></i></div>
           Formulário de Solicitação
         </a>
-        <a class="nav-link" href="pagtos">
+        <a class="nav-link" routerLink="/pagamento-lista-users">
           <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
           Minhas Solicitações
         </a>
-        <div class="sb-sidenav-menu-heading">Consultas</div>
-        <a class="nav-link" href="charts.html">
+        <div class="sb-sidenav-menu-heading" *ngIf="permissaoUsuario">Gerencial</div>
+        <a class="nav-link" routerLink="/usuarios-form" *ngIf="permissaoUsuario">
+          <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+          Criar Usuários
+        </a>
+        <a class="nav-link" href="charts.html" *ngIf="permissaoUsuario">
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
           Charts
         </a>
-        <a class="nav-link" routerLink="/pagamento-listagem">
+        <a class="nav-link" routerLink="/pagamento-listagem" *ngIf="permissaoUsuario">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Consulta de Solicitações
-        </a>
-        <div class="sb-sidenav-menu-heading">Gerencial</div>
-        <a class="nav-link" routerLink="/usuarios-form">
-          <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-          Criar Usuários
         </a>
       </div>
     </div>

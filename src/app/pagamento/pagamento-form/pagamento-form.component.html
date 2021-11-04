@@ -27,20 +27,20 @@
           </select>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Status da Solicitação: *</label>
-          <select class="form-control"
-                  [ngModelOptions]="{standalone: true}"
-                  [(ngModel)]="pagamento.idTipoStatus">
-            >
-            <option value="">Selecione ...</option>
-            <option *ngFor="let tiposStatus of tipoStatus" [ngValue]="tiposStatus.id">
-              {{ tiposStatus.nomeStatus }}
-            </option>
-          </select>
-        </div>
-      </div>
+<!--      <div class="col-md-6">-->
+<!--        <div class="form-group">-->
+<!--          <label>Status da Solicitação: *</label>-->
+<!--          <select class="form-control"-->
+<!--                  [ngModelOptions]="{standalone: true}"-->
+<!--                  [(ngModel)]="pagamento.idTipoStatus">-->
+<!--            >-->
+<!--            <option value="">Selecione ...</option>-->
+<!--            <option *ngFor="let tiposStatus of tipoStatus" [ngValue]="tiposStatus.id">-->
+<!--              {{ tiposStatus.nomeStatus }}-->
+<!--            </option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--      </div>-->
 
     </div>
 
@@ -108,12 +108,16 @@
     <div class="row">
 
       <div class="col-md-6">
-        <div class="form-group">
-          <label>Centro de Custos: *</label>
-          <input type="text" class="form-control" name="observacao" [(ngModel)]="pagamento.centroDeCusto" />
-        </div>
+        <label class="small mb-1" style="color: #082B58; font-size: 15px">Centro de Custo</label>
+        <select class="form-control" name="select" [(ngModel)]="pagamento.centroDeCusto">
+          <option value="TECNOLOGIA DA INFORMAÇÃO">TECNOLOGIA DA INFORMAÇÃO</option>
+          <option value="COMERCIAL E MARKETING">COMERCIAL E MARKETING</option>
+          <option value="FINANCEIRO E CONTROLADORIA">FINANCEIRO E CONTROLADORIA</option>
+          <option value="DHO">DHO</option>
+          <option value="ÁREA OPERACIONAL">ÁREA OPERACIONAL</option>
+          <option value="DIRETORIA">DIRETORIA</option>
+        </select>
       </div>
-
       <div class="col-md-6">
         <div class="form-group">
           <div class="custom-file">
