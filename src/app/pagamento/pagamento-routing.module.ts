@@ -11,6 +11,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], children: [
 
       { path: 'pagamento-form', component: PagamentoFormComponent },
+      { path: 'pagamento-form/:id', component: PagamentoFormComponent },
       { path: 'pagamento-listagem', component: PagamentoListaComponent },
       { path: 'pagamento-lista-users', component: PagamentoListaUsersComponent }
   ]}

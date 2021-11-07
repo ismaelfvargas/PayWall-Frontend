@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PagamentoBusca} from "../pagamento-lista/pagamentoBusca";
 import {PagamentosService} from "../../pagamentos.service";
 

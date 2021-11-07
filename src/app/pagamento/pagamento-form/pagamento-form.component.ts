@@ -7,6 +7,7 @@ import { TipoPedido } from "../TipoPedido";
 import { TipoPedidoService } from "../../tipoPedido.service";
 import { TipoStatus } from "../TipoStatus";
 import { TipoStatusService } from "../../tipoStatus.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-pagamento-form',
@@ -19,17 +20,30 @@ export class PagamentoFormComponent implements OnInit {
   success: boolean = false;
   tipoPedido: TipoPedido[] = [];
   tipoStatus: TipoStatus[] = [];
+  id: number;
 
   constructor( private pagamentosService: PagamentosService,
                private uploadFileService: UploadFileService,
                private tipoPedidoService: TipoPedidoService,
-               private tipoStatusService: TipoStatusService
+               private tipoStatusService: TipoStatusService,
+               private activatedRoute: ActivatedRoute
               )
     {
       this.pagamento = new Pagamento();
     }
 
   ngOnInit(): void {
+    let params : Params = this.activatedRoute.params;
+    if (params && params.value && params.value.id){
+      this.id = params.value.id;
+      this.pagamentosService
+        .getPagamentoById(this.id)
+        .subscribe(
+          response => this.pagamento = response ,
+          errorResponse => this.pagamento = new Pagamento()
+        )
+    }
+
     this.pagamento.fileInfos = this.uploadFileService.getFiles();
     this.tipoPedidoService
       .getTipoPedido()

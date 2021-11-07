@@ -31,4 +31,8 @@ export class PagamentosService {
     return this.http.get<any>(url);
   }
 
+  getPagamentoById(id: number) : Observable<Pagamento>{
+    return this.http.get<any>(`http://localhost:8080/api/pagamentos/${id}`);
+  }
+
 }

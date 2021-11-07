@@ -3,6 +3,7 @@ import {TipoStatus} from "../TipoStatus";
 import {Usuario} from "../../login/usuario";
 
 export class PagamentoBusca {
+  id: number;
   tributo: string;
   nomeFornecedor: string;
   dataEmissao: string;
