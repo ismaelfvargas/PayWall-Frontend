@@ -1,0 +1,8 @@
+td{
+  font-family: 'Nunito Sans'; color: #686c71;
+}
+
+.badge_success {
+  background: rgb(255, 227, 0);
+  border-radius: 5px;
+}

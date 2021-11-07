@@ -1,6 +1,6 @@
 <h1 class="mt-3" style="color: #082B58">Formulário de Solicitação de Pagamento</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active" style="color: #082B58">Cadastrar Solicitação de Pagamento</li>
+  <li class="breadcrumb-item active" style="color: #082B58"> {{ pagamento.id ? 'Editar Solicitação' : 'Cadastrar Solicitação' }} </li>
 </ol>
 <div class="container">
   <form #pagamentoForm="ngForm" (ngSubmit)="onSubmit()" >
@@ -27,20 +27,21 @@
           </select>
         </div>
       </div>
-<!--      <div class="col-md-6">-->
-<!--        <div class="form-group">-->
-<!--          <label>Status da Solicitação: *</label>-->
-<!--          <select class="form-control"-->
-<!--                  [ngModelOptions]="{standalone: true}"-->
-<!--                  [(ngModel)]="pagamento.idTipoStatus">-->
-<!--            >-->
-<!--            <option value="">Selecione ...</option>-->
-<!--            <option *ngFor="let tiposStatus of tipoStatus" [ngValue]="tiposStatus.id">-->
-<!--              {{ tiposStatus.nomeStatus }}-->
-<!--            </option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
+
+      <div class="col-md-6" *ngIf="pagamento.id">
+        <div class="form-group">
+          <label>Status da Solicitação: *</label>
+          <select class="form-control"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="pagamento.idTipoStatus">
+            >
+            <option value="">Selecione ...</option>
+            <option *ngFor="let tiposStatus of tipoStatus" [ngValue]="tiposStatus.id">
+              {{ tiposStatus.nomeStatus }}
+            </option>
+          </select>
+        </div>
+      </div>
 
     </div>
 
@@ -157,24 +158,6 @@
           </div>
         </div>
       </div>
-
-
-      <!--      <div class="col-md-6">-->
-      <!--        <div class="form-group">-->
-      <!--          <label>Documentos Anexados: </label>-->
-      <!--          <div class="card">-->
-      <!--            <div class="card-header">List of Files</div>-->
-      <!--            <ul-->
-      <!--              class="list-group list-group-flush"-->
-      <!--              *ngFor="let file of pagamento.fileInfos | async"-->
-      <!--            >-->
-      <!--              <li class="list-group-item">-->
-      <!--                <a href="{{ file.url }}">{{ file.name }}</a>-->
-      <!--              </li>-->
-      <!--            </ul>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
 
     </div>
 

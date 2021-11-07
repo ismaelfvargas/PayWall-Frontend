@@ -2,6 +2,7 @@
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Consulta</li>
 </ol>
+<link href='https://fonts.googleapis.com/css?family=Nunito Sans' rel='stylesheet'>
 <div class="container" style="max-width: 1327px">
   <form #consultarForm="ngForm" (submit)="consultar()">
     <div class="row">
@@ -37,11 +38,13 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-striped table-bordered">
+      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 15px">
           <thead class="thead-light">
-              <tr>
-                <th>Tipo de Solicitação</th>
+              <tr style="background-color: #588ad6; color: #FFFFFF">
+                <th style="width: border-box">#</th>
                 <th>Status da Solicitação</th>
+                <th>Solicitante</th>
+                <th>Tipo de Solicitação</th>
                 <th>Data de Emissão</th>
                 <th>Data de Vencimento</th>
                 <th>Nome Fornecedor</th>
@@ -51,13 +54,16 @@
                 <th>Valor Bruto</th>
                 <th>Valor Liquido</th>
                 <th>Centro de Custos</th>
-                <th>Solicitante</th>
+                <th *ngIf="permissaoUsuario">Aprovar/Reprovar</th>
+                <th *ngIf="permissaoAssistente">Editar</th>
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let s of lista">
+              <tr *ngFor="let s of lista; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td> <span class="badge_success">{{s.tipoStatus.nomeStatus}}</span> </td>
+                <td> {{s.usuario.username}} </td>
                 <td> {{s.tipoPedido.nomePedido}} </td>
-                <td> {{s.tipoStatus.nomeStatus}} </td>
                 <td> {{s.dataEmissao}} </td>
                 <td> {{s.dataVencimento}} </td>
                 <td> {{s.nomeFornecedor}} </td>
@@ -67,7 +73,20 @@
                 <td> {{s.valorBruto}} </td>
                 <td> {{s.valorLiquido}} </td>
                 <td> {{s.centroDeCusto}} </td>
-                <td> {{s.usuario.username}} </td>
+                <td *ngIf="permissaoUsuario">
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-success">Aprovar</button>
+                    <button type="button" class="btn btn-danger">Reprovar</button>
+                  </div>
+                </td>
+                <td *ngIf="permissaoAssistente">
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary"
+                            routerLink="/pagamento-form/{{s.id}}">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  </div>
+                </td>
               </tr>
           </tbody>
       </table>

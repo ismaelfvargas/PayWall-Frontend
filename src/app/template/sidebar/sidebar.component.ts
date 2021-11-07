@@ -10,6 +10,7 @@ export class SidebarComponent implements OnInit {
 
   usuarioLogado: string;
   permissaoUsuario: boolean;
+  permissaoAssistente: boolean;
 
   constructor(
     private authService: AuthService
@@ -18,10 +19,22 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.usuarioLogado = this.authService.getUsuarioAutenticado();
     this.permissaoUsuario = false;
+    this.permissaoAssistenteTeste();
+    console.log(this.permissaoAssistente);
     this.authService
       .permissaoUsuariosMenu()
       .subscribe(response => {
         this.permissaoUsuario = true;
+      });
+  }
+
+  permissaoAssistenteTeste(): void {
+    this.usuarioLogado = this.authService.getUsuarioAutenticado();
+    this.permissaoAssistente = false;
+    this.authService
+      .permissaoUsuarioAssistente()
+      .subscribe(response => {
+        this.permissaoAssistente = true;
       })
   }
 

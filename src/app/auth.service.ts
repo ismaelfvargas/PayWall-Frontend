@@ -83,4 +83,12 @@ export class AuthService {
     }
     return this.http.get<any>('http://localhost:8080/api/usuarios/permissao/menu' , {headers});
   }
+
+  permissaoUsuarioAssistente() : Observable<any> {
+    const token = JSON.parse(localStorage.getItem('access_token') || '{}')
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.get<any>('http://localhost:8080/api/usuarios/permissao/assistente' , {headers});
+  }
 }

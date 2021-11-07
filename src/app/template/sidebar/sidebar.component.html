@@ -22,7 +22,13 @@
           <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
           Minhas Solicitações
         </a>
+<!--        <div class="sb-sidenav-menu-heading" *ngIf="permissaoAssistente">Financeiro/Contábil</div>-->
+<!--        <a class="nav-link" routerLink="/usuarios-form" *ngIf="permissaoAssistente">-->
+<!--          <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>-->
+<!--          Pesquisa de Solicitações-->
+<!--        </a>-->
         <div class="sb-sidenav-menu-heading" *ngIf="permissaoUsuario">Gerencial</div>
+        <div class="sb-sidenav-menu-heading" *ngIf="permissaoAssistente">Financeiro/Contábil</div>
         <a class="nav-link" routerLink="/usuarios-form" *ngIf="permissaoUsuario">
           <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
           Criar Usuários
@@ -31,14 +37,14 @@
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
           Charts
         </a>
-        <a class="nav-link" routerLink="/pagamento-listagem" *ngIf="permissaoUsuario">
+        <a class="nav-link" routerLink="/pagamento-listagem" *ngIf="permissaoUsuario || permissaoAssistente">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Consulta de Solicitações
         </a>
       </div>
     </div>
     <div class="sb-sidenav-footer" style="background-color: #622cab;">
-      <div class="media">Usuário Logado:</div>
+      <div class="media">Usuário logado:</div>
       <div class="small">{{ usuarioLogado }}</div>
     </div>
   </nav>
