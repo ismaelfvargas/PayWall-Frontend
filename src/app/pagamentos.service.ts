@@ -27,12 +27,25 @@ export class PagamentosService {
       .set("nomeStatus", nomeStatus);
 
     const url = this.apiURL + "?" + httpParams;
-    console.log(url);
     return this.http.get<any>(url);
   }
 
   getPagamentoById(id: number) : Observable<Pagamento>{
     return this.http.get<any>(`http://localhost:8080/api/pagamentos/${id}`);
+  }
+
+  buscarUser(nomeFornecedor = "", nomeStatus = "") : Observable<PagamentoBusca[]>{
+
+    const httpParams = new HttpParams()
+      .set("nomeFornecedor", nomeFornecedor)
+      .set("nomeStatus", nomeStatus);
+
+    const url = this.apiURL + "?" + httpParams;
+    return this.http.get<any>('http://localhost:8080/api/pagamentos/teste');
+  }
+
+  trocaStatus(id: number, tipoStatus: number){
+    return this.http.put<any>(`http://localhost:8080/api/pagamentos/atualizandoStatus/${id}/${tipoStatus}`, {})
   }
 
 }

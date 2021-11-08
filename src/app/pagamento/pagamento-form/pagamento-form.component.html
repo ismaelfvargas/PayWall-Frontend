@@ -109,7 +109,7 @@
     <div class="row">
 
       <div class="col-md-6">
-        <label class="small mb-1" style="color: #082B58; font-size: 15px">Centro de Custo</label>
+        <label>Centro de Custo: *</label>
         <select class="form-control" name="select" [(ngModel)]="pagamento.centroDeCusto">
           <option value="TECNOLOGIA DA INFORMAÇÃO">TECNOLOGIA DA INFORMAÇÃO</option>
           <option value="COMERCIAL E MARKETING">COMERCIAL E MARKETING</option>
@@ -153,7 +153,7 @@
               </div>
             </div>
 
-            <div class="alert alert-light" role="alert">{{ pagamento.message }}</div>
+            <div class="alert alert-light" role="alert" style="background-color: #F9F9F9">{{ pagamento.message }}</div>
 
           </div>
         </div>
