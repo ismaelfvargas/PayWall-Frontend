@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PagamentoBusca} from "../pagamento-lista/pagamentoBusca";
 import {PagamentosService} from "../../pagamentos.service";
+import {AuthService} from "../../auth.service";
 
 @Component({
   selector: 'app-pagamento-lista-users',
@@ -14,7 +15,8 @@ export class PagamentoListaUsersComponent implements OnInit {
   lista: PagamentoBusca[];
 
   constructor(
-    private service: PagamentosService
+    private service: PagamentosService,
+    private userService : AuthService
   ) {}
 
   ngOnInit(): void {
@@ -23,8 +25,9 @@ export class PagamentoListaUsersComponent implements OnInit {
 
   consultarListaUsers(){
     this.service
-      .buscar(this.nomeFornecedor, this.nomeStatus)
+      .buscarUser(this.nomeFornecedor, this.nomeStatus)
       .subscribe(response => this.lista = response);
   }
+
 
 }

@@ -16,7 +16,8 @@ export class PagamentoListaComponent implements OnInit {
   lista: PagamentoBusca[];
   usuarioLogado: string;
   permissaoUsuario: boolean;
-  permissaoAssistente: boolean
+  permissaoAssistente: boolean;
+  botaoAprovadoAtivo: boolean = true;
 
   constructor(
       private service: PagamentosService,
@@ -55,4 +56,15 @@ export class PagamentoListaComponent implements OnInit {
   novoPagamento(){
     this.router.navigate(['/pagamento-form'])
   }
+
+  trocaStatus(idPedido, idStatus){
+    this.botaoAprovadoAtivo = false;
+    this.service
+      .trocaStatus(idPedido, idStatus)
+      .subscribe(response => {
+        this.consultar();
+        this.botaoAprovadoAtivo = true;
+      })
+  }
+
 }

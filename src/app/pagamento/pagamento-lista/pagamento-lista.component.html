@@ -38,9 +38,9 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 15px">
+      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 15px; background-color: #ffffff">
           <thead class="thead-light">
-              <tr style="background-color: #588ad6; color: #FFFFFF">
+              <tr style="background-color: #7f5cb3; color: #ffffff">
                 <th style="width: border-box">#</th>
                 <th>Status da Solicitação</th>
                 <th>Solicitante</th>
@@ -75,15 +75,31 @@
                 <td> {{s.centroDeCusto}} </td>
                 <td *ngIf="permissaoUsuario">
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success">Aprovar</button>
-                    <button type="button" class="btn btn-danger">Reprovar</button>
+                    <button type="button" class="btn btn-success"
+                            (click)="trocaStatus(s.id, 3)"
+                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 3 || s.tipoStatus.id == 2)">
+                      Aprovar
+                    </button>
+                    <button type="button" class="btn btn-danger"
+                            (click)="trocaStatus(s.id, 2)"
+                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 3 || s.tipoStatus.id == 2)">
+                      Reprovar
+                    </button>
                   </div>
                 </td>
                 <td *ngIf="permissaoAssistente">
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary"
-                            routerLink="/pagamento-form/{{s.id}}">
-                      <i class="fa fa-edit"></i>
+                    <button type="button" class="btn btn-primary" style="background-color: #48a0c1; border-color: #48a0c1"
+                            (click)="trocaStatus(s.id, 4)"
+                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 4 || s.tipoStatus.id == 5 || s.tipoStatus.id == 1 || s.tipoStatus.id == 2)">
+                      <i class="far fa-file"></i>
+                      Lançado
+                    </button>
+                    <button type="button" class="btn btn-secondary" style="background-color: #32a740; border-color: #32a740"
+                            (click)="trocaStatus(s.id, 5)"
+                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 5 || s.tipoStatus.id == 1 || s.tipoStatus.id == 2 || s.tipoStatus.id == 3)">
+                      <i class="fas fa-dollar-sign"></i>
+                      Pago
                     </button>
                   </div>
                 </td>
