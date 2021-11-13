@@ -29,7 +29,6 @@ export class PagamentoListaComponent implements OnInit {
     this.usuarioLogado = this.authService.getUsuarioAutenticado();
     this.permissaoUsuario = false;
     this.permissaoAssistenteTeste();
-    console.log(this.permissaoAssistente);
     this.authService
       .permissaoUsuariosMenu()
       .subscribe(response => {

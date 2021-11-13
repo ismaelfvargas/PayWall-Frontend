@@ -11,6 +11,7 @@ import {environment} from "../environments/environment";
 export class PagamentosService {
 
   apiURL: string = environment.apiURLBase + "/api/pagamentos"
+  apiURLuser: string = environment.apiURLBase + "/api/pagamentos/teste"
 
   /* Acessa o REST API, http/postman. */
   constructor( private http: HttpClient ) {
@@ -40,8 +41,8 @@ export class PagamentosService {
       .set("nomeFornecedor", nomeFornecedor)
       .set("nomeStatus", nomeStatus);
 
-    const url = this.apiURL + "?" + httpParams;
-    return this.http.get<any>('http://localhost:8080/api/pagamentos/teste');
+    const url = this.apiURLuser + "?" + httpParams;
+    return this.http.get<any>(url);
   }
 
   trocaStatus(id: number, tipoStatus: number){
