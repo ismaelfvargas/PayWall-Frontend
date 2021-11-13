@@ -1,4 +1,4 @@
-<h1 class="mt-3">Pagamentos</h1>
+<h1 class="mt-3">Consulta de solicitações</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Consulta</li>
 </ol>
@@ -20,6 +20,7 @@
           <option value="REPROVADO">REPROVADO</option>
           <option value="LANÇADO">LANÇADO</option>
           <option value="PAGO">PAGO</option>
+          <option value="">TODOS</option>
         </select>
       </div>
     </div>
@@ -38,7 +39,7 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 15px; background-color: #ffffff">
+      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 14px; background-color: #ffffff">
           <thead class="thead-light">
               <tr style="background-color: #7f5cb3; color: #ffffff">
                 <th style="width: border-box">#</th>
@@ -77,12 +78,12 @@
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-success"
                             (click)="trocaStatus(s.id, 3)"
-                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 3 || s.tipoStatus.id == 2)">
+                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 3 || s.tipoStatus.id == 2 || s.tipoStatus.id == 4 || s.tipoStatus.id == 5)">
                       Aprovar
                     </button>
                     <button type="button" class="btn btn-danger"
                             (click)="trocaStatus(s.id, 2)"
-                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 3 || s.tipoStatus.id == 2)">
+                            [disabled]="(!botaoAprovadoAtivo) || (s.tipoStatus.id == 3 || s.tipoStatus.id == 2 || s.tipoStatus.id == 4 || s.tipoStatus.id == 5)">
                       Reprovar
                     </button>
                   </div>
