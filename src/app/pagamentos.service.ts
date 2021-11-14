@@ -49,4 +49,8 @@ export class PagamentosService {
     return this.http.put<any>(`http://localhost:8080/api/pagamentos/atualizandoStatus/${id}/${tipoStatus}`, {})
   }
 
+  inserindoMensagemReprovacao(id: number, mensagemReprovacao: string){
+      return this.http.put<any>(`http://localhost:8080/api/pagamentos/inserirMensagemReprovacao/${id}/${mensagemReprovacao}`, {})
+  }
+
 }
