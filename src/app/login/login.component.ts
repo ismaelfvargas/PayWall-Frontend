@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit{
   mensagemSucesso: string;
   errors: string[];
 
+  myimage1:string = "../../../assets/img/logo.png";
+
   public backgroundImg: SafeStyle;
   @Input() myObject: any;
 
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(' + "../../../assets/img/imageLogin.png" + ')');
+    this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(' + "../../../assets/img/imageLogin.jpg" + ')');
   }
 
   onSubmit(){

@@ -3,6 +3,7 @@ import {PagamentoBusca} from "./pagamentoBusca";
 import {PagamentosService} from "../../pagamentos.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../auth.service";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pagamento-lista',
@@ -18,11 +19,15 @@ export class PagamentoListaComponent implements OnInit {
   permissaoUsuario: boolean;
   permissaoAssistente: boolean;
   botaoAprovadoAtivo: boolean = true;
+  closeResult = '';
+  idPedidoSelecionado: number;
+  mensagemRepovacao: string;
 
   constructor(
       private service: PagamentosService,
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -66,4 +71,31 @@ export class PagamentoListaComponent implements OnInit {
       })
   }
 
+  insereMensagemReprovacao(){
+    this.botaoAprovadoAtivo = false;
+    this.service
+      .inserindoMensagemReprovacao(this.idPedidoSelecionado, this.mensagemRepovacao)
+      .subscribe(reponse => {
+      })
+  }
+
+  open(idPedido, content) {
+    this.idPedidoSelecionado = idPedido;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+
+  }
 }
