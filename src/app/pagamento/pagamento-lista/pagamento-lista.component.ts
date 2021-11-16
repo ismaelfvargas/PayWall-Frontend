@@ -20,6 +20,8 @@ export class PagamentoListaComponent implements OnInit {
   permissaoAssistente: boolean;
   botaoAprovadoAtivo: boolean = true;
   closeResult = '';
+  idPedidoSelecionado: number;
+  mensagemRepovacao: string;
 
   constructor(
       private service: PagamentosService,
@@ -69,13 +71,16 @@ export class PagamentoListaComponent implements OnInit {
       })
   }
 
-  insereMensagemReprovacao(idPedido, mensagemReprovacao){
+  insereMensagemReprovacao(){
     this.botaoAprovadoAtivo = false;
     this.service
-      .inserindoMensagemReprovacao(idPedido, mensagemReprovacao)
+      .inserindoMensagemReprovacao(this.idPedidoSelecionado, this.mensagemRepovacao)
+      .subscribe(reponse => {
+      })
   }
 
-  open(content) {
+  open(idPedido, content) {
+    this.idPedidoSelecionado = idPedido;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
