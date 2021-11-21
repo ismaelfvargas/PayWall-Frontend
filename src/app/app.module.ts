@@ -18,6 +18,10 @@ import {UsuariosModule} from "./usuarios/usuarios.module";
 import {TokenInterceptor} from "./token.interceptor";
 import {TipoPedidoService} from "./tipoPedido.service";
 import {TipoStatusService} from "./tipoStatus.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DashboardModule} from "./modules/dashboard.module";
+import {SharedRoutingModule} from "./shared/shared-routing.module";
+import {HighchartsChartModule} from "highcharts-angular";
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import {TipoStatusService} from "./tipoStatus.service";
     AppRoutingModule,
     TemplateModule,
     PagamentoModule,
-    UsuariosModule
+    UsuariosModule,
+    BrowserAnimationsModule,
+    DashboardModule,
+    SharedRoutingModule,
+    HighchartsChartModule
   ],
   providers: [
     PagamentosService,

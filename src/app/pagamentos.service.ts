@@ -53,4 +53,8 @@ export class PagamentosService {
       return this.http.put<any>(`http://localhost:8080/api/pagamentos/inserirMensagemReprovacao/${id}/${mensagemReprovacao}`, {})
   }
 
+  buscarDocumentos(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/buscarDocumento/${id}`);
+  }
+
 }

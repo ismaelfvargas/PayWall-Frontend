@@ -57,10 +57,6 @@ export class PagamentoListaComponent implements OnInit {
       .subscribe(response => this.lista = response);
   }
 
-  novoPagamento(){
-    this.router.navigate(['/pagamento-form'])
-  }
-
   trocaStatus(idPedido, idStatus){
     this.botaoAprovadoAtivo = false;
     this.service
