@@ -39,7 +39,7 @@
   <br/>
   <div class="row">
     <div class="col-md-12">
-      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 13px; background-color: #ffffff">
+      <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 12px; background-color: #ffffff">
         <thead class="thead-light">
         <tr style="background-color: #615ead; color: #ffffff">
           <th style="width: border-box">#</th>
@@ -55,6 +55,8 @@
           <th>Valor Bruto</th>
           <th>Valor Liquido</th>
           <th>Centro de Custos</th>
+          <th>Status Adiantamento</th>
+          <th>Prestação de Contas</th>
         </tr>
         </thead>
         <tbody>
@@ -72,6 +74,16 @@
           <td> {{s.valorBruto}} </td>
           <td> {{s.valorLiquido}} </td>
           <td> {{s.centroDeCusto}} </td>
+          <td> <span class="statusPrestacao">{{s.tipoStatusAdto ? s.tipoStatusAdto.nomeStatus : ""}}</span> </td>
+          <td>
+            <div>
+              <button type="button" class="btn btn-info btn-sm" style="font-size: 11px; width: 62px"
+                      (click)="trocaStatusAdto(s.id, 2)"
+                      [disabled]="(!botaoPrestacaoAtivo) || (s.tipoStatusAdto ? s.tipoStatusAdto.id == 2 : true) || (s.tipoPedido.id != 2)">
+                Prestar Contas
+              </button>
+            </div>
+          </td>
         </tr>
         </tbody>
       </table>

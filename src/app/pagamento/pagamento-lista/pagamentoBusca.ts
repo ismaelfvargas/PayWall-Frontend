@@ -1,6 +1,7 @@
 import {TipoPedido} from "../TipoPedido";
 import {TipoStatus} from "../TipoStatus";
 import {Usuario} from "../../login/usuario";
+import {TipoStatusAdto} from "../TipoStatusAdto";
 
 export class PagamentoBusca {
   id: number;
@@ -16,4 +17,5 @@ export class PagamentoBusca {
   tipoPedido: TipoPedido;
   tipoStatus: TipoStatus;
   usuario: Usuario;
+  tipoStatusAdto: TipoStatusAdto;
 }

@@ -13,6 +13,7 @@ export class Pagamento {
   centroDeCusto: string;
   idTipoPedido: number;
   idTipoStatus: number;
+  idTipoStatusAdto: number;
 
 
   selectedFiles: FileList;
