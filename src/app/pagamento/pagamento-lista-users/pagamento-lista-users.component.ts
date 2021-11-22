@@ -13,6 +13,7 @@ export class PagamentoListaUsersComponent implements OnInit {
   nomeFornecedor: string;
   nomeStatus: string;
   lista: PagamentoBusca[];
+  botaoPrestacaoAtivo: boolean = true;
 
   constructor(
     private service: PagamentosService,
@@ -27,6 +28,16 @@ export class PagamentoListaUsersComponent implements OnInit {
     this.service
       .buscarUser(this.nomeFornecedor, this.nomeStatus)
       .subscribe(response => this.lista = response);
+  }
+
+  trocaStatusAdto(idPedido, idStatusAdto){
+    this.botaoPrestacaoAtivo = false;
+    this.service
+      .trocaStatusAdto(idPedido, idStatusAdto)
+      .subscribe(response => {
+        this.consultarListaUsers();
+        this.botaoPrestacaoAtivo = true;
+      })
   }
 
 

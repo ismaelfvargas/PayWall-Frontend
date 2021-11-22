@@ -6,3 +6,8 @@ td{
   background: rgb(255 233 128);
   border-radius: 5px;
 }
+
+.statusPrestacao {
+  background: rgb(255 210 128);
+  border-radius: 5px;
+}
