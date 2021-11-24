@@ -4,6 +4,7 @@ import {PagamentosService} from "../../pagamentos.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../auth.service";
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Pagamento} from "../Pagamento";
 
 @Component({
   selector: 'app-pagamento-lista',
@@ -22,6 +23,9 @@ export class PagamentoListaComponent implements OnInit {
   closeResult = '';
   idPedidoSelecionado: number;
   mensagemRepovacao: string;
+  pagamentoSelecionado: PagamentoBusca;
+  mensagemSucesso: string;
+  mensagemErro: string;
 
   constructor(
       private service: PagamentosService,
@@ -113,6 +117,19 @@ export class PagamentoListaComponent implements OnInit {
       return `with: ${reason}`;
     }
 
+  }
+
+  preparaDelecao(pagamento: PagamentoBusca){
+    this.pagamentoSelecionado = pagamento;
+  }
+
+  deletarPagamento(){
+    this.service
+      .deletar(this.pagamentoSelecionado)
+      .subscribe(
+        response => this.mensagemSucesso = 'Solicitação deletada com sucesso!',
+        erro => this.mensagemErro = 'Ocorreu um erro ao deletar a solicitação.'
+      )
   }
 
 }

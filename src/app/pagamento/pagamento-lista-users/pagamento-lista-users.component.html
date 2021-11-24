@@ -55,6 +55,7 @@
           <th>Valor Bruto</th>
           <th>Valor Liquido</th>
           <th>Centro de Custos</th>
+          <th>Documentos</th>
           <th>Status Adiantamento</th>
           <th>Prestação de Contas</th>
         </tr>
@@ -74,12 +75,20 @@
           <td> {{s.valorBruto}} </td>
           <td> {{s.valorLiquido}} </td>
           <td> {{s.centroDeCusto}} </td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn btn-secondary" style="font-size: 11px; width: 78px">
+<!--                      (click)="openDocumentos(s.id, contentDocumentos)"-->
+                Documentos
+              </button>
+            </div>
+          </td>
           <td> <span class="statusPrestacao">{{s.tipoStatusAdto ? s.tipoStatusAdto.nomeStatus : ""}}</span> </td>
           <td>
             <div>
               <button type="button" class="btn btn-info btn-sm" style="font-size: 11px; width: 62px"
                       (click)="trocaStatusAdto(s.id, 2)"
-                      [disabled]="(!botaoPrestacaoAtivo) || (s.tipoStatusAdto ? s.tipoStatusAdto.id == 2 : true) || (s.tipoPedido.id != 2)">
+                      [disabled]="(!botaoPrestacaoAtivo) || (s.tipoStatusAdto.id == 2)">
                 Prestar Contas
               </button>
             </div>
