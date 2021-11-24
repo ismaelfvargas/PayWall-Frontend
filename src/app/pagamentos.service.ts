@@ -61,4 +61,8 @@ export class PagamentosService {
     return this.http.get(`http://localhost:8080/buscarDocumento/${id}`);
   }
 
+  deletar(pagamento: PagamentoBusca) : Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/api/pagamentos/${pagamento.id}`);
+  }
+
 }
