@@ -4,13 +4,17 @@ import {PagamentosService} from "../../pagamentos.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../auth.service";
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Pagamento} from "../Pagamento";
+import {HttpClient} from '@angular/common/http';
+import {saveAs as importedSaveAs} from "file-saver";
 
 @Component({
   selector: 'app-pagamento-lista',
   templateUrl: './pagamento-lista.component.html',
   styleUrls: ['./pagamento-lista.component.css']
 })
+
+
+
 export class PagamentoListaComponent implements OnInit {
 
   nomeFornecedor: string;
@@ -26,12 +30,16 @@ export class PagamentoListaComponent implements OnInit {
   pagamentoSelecionado: PagamentoBusca;
   mensagemSucesso: string;
   mensagemErro: string;
+  documentoArquivo: any;
 
   constructor(
       private service: PagamentosService,
       private authService: AuthService,
       private router: Router,
-      private modalService: NgbModal
+      private modalService: NgbModal,
+      private http: HttpClient
+
+
   ) {}
 
   ngOnInit(): void {
@@ -100,12 +108,19 @@ export class PagamentoListaComponent implements OnInit {
   }
 
   openDocumentos(idPedido, content) {
-    this.idPedidoSelecionado = idPedido;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReasonDocumentos(reason)}`;
-    });
+    this.service
+      .buscarDocumentos(idPedido)
+      .subscribe(reponse => {
+        console.log(this.documentoArquivo)
+        this.documentoArquivo = reponse
+        this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReasonDocumentos(reason)}`;
+        });
+      })
+
+
   }
 
   private getDismissReasonDocumentos(reason: any): string {
@@ -130,6 +145,15 @@ export class PagamentoListaComponent implements OnInit {
         response => this.mensagemSucesso = 'Solicitação deletada com sucesso!',
         erro => this.mensagemErro = 'Ocorreu um erro ao deletar a solicitação.'
       )
+  }
+
+  downloadFile(url, type) {
+    this.http.get(url, {responseType: "blob"})
+      .subscribe(response => {
+        const blob = new Blob([response], { type: type });
+        const url= window.URL.createObjectURL(blob);
+        window.open(url);
+      })
   }
 
 }

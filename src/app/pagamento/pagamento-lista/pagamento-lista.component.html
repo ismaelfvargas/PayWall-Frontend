@@ -211,10 +211,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let s of lista; index as i">
+                <tr *ngFor="let s of documentoArquivo; index as i">
                   <th scope="row">{{ i + 1 }}</th>
-                  <td> {{s.usuario.username}} </td>
-                  <td>teste</td>
+                  <td>{{s.name}}</td>
+                  <td> <a role="button" (click)="downloadFile(s.url, s.type)" >Download</a></td>
                 </tr>
                 </tbody>
               </table>
