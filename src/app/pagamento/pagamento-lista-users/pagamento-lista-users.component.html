@@ -77,8 +77,8 @@
           <td> {{s.centroDeCusto}} </td>
           <td>
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn btn-secondary" style="font-size: 11px; width: 78px">
-<!--                      (click)="openDocumentos(s.id, contentDocumentos)"-->
+              <button type="button" class="btn btn btn-secondary" style="font-size: 11px; width: 78px"
+                      (click)="openDocumentos(s.id, contentDocumentos)">
                 Documentos
               </button>
             </div>
@@ -99,3 +99,41 @@
     </div>
   </div>
 </div>
+
+<!--  MODAL DOCUMENTOS -->
+<ng-template #contentDocumentos let-modalDocumentos>
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-basic-title-documentos">Documentos</h3>
+    <button type="button" class="close" aria-label="Close" (click)="modalDocumentos.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table-responsive-lg table-hover table-bordered text-center" style="font-size: 13px; background-color: #ffffff">
+                <thead class="thead-light">
+                <tr style="background-color: #615ead; color: #ffffff">
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Documento</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let s of documentoArquivo; index as i">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{s.name}}</td>
+                  <td> <a role="button" (click)="downloadFile(s.url, s.type)" >Download</a></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
