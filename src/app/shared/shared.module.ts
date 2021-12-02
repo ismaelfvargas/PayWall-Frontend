@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import {AreaComponent} from "./widgets/area/area.component";
-import {HighchartsChartModule} from "highcharts-angular";
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {HighchartsChartModule} from "highcharts-angular";
   imports: [
     CommonModule,
     SharedRoutingModule,
-    HighchartsChartModule
+    NgApexchartsModule
   ],
   exports: [
     AreaComponent

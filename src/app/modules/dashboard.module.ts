@@ -4,7 +4,7 @@ import {DashboardRoutingModule} from "./dashboard-routing.module";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {SharedModule} from "../shared/shared.module";
 import {MatDividerModule} from "@angular/material/divider";
-import {HighchartsChartModule} from "highcharts-angular";
+
 
 
 @NgModule({
@@ -15,8 +15,7 @@ import {HighchartsChartModule} from "highcharts-angular";
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    MatDividerModule,
-    HighchartsChartModule
+    MatDividerModule
   ],
   exports: [
     DashboardComponent

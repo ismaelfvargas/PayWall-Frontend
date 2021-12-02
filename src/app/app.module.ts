@@ -21,7 +21,7 @@ import {TipoStatusService} from "./tipoStatus.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DashboardModule} from "./modules/dashboard.module";
 import {SharedRoutingModule} from "./shared/shared-routing.module";
-import {HighchartsChartModule} from "highcharts-angular";
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import {HighchartsChartModule} from "highcharts-angular";
     BrowserAnimationsModule,
     DashboardModule,
     SharedRoutingModule,
-    HighchartsChartModule
+    NgApexchartsModule
   ],
   providers: [
     PagamentosService,

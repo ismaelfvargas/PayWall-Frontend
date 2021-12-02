@@ -1,62 +1,177 @@
-import {Component, Input, OnInit} from '@angular/core';
-import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {PagamentosService} from "../../../pagamentos.service";
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexDataLabels,
+  ApexStroke,
+  ApexMarkers,
+  ApexYAxis,
+  ApexGrid,
+  ApexTitleSubtitle,
+  ApexLegend
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  stroke: ApexStroke;
+  dataLabels: ApexDataLabels;
+  markers: ApexMarkers;
+  colors: string[];
+  yaxis: ApexYAxis;
+  grid: ApexGrid;
+  legend: ApexLegend;
+  title: ApexTitleSubtitle;
+};
 
 @Component({
   selector: 'app-widget-area',
   templateUrl: './area.component.html',
   styleUrls: ['./area.component.css']
 })
+
 export class AreaComponent implements OnInit {
 
-  chartOptions: {};
-  // @Input() data: any = [];
+  @ViewChild("chart") chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
 
-  Highcharts = Highcharts;
 
-  constructor() { }
+  constructor(private service: PagamentosService)
+  {
+    this.service
+      .dashboard()
+      .subscribe(response => {
+        console.log(this.logicaDash(response))
+        let d = this.logicaDash(response)
+        this.chartOptions = {
+          series: d[0],
+          chart: {
+            height: 350,
+            type: "line",
+            dropShadow: {
+              enabled: true,
+              color: "#000",
+              top: 18,
+              left: 7,
+              blur: 10,
+              opacity: 0.2
+            },
+            toolbar: {
+              show: false
+            }
+          },
+          // colors: ["#77B6EA", "#545454"],
+          dataLabels: {
+            enabled: true
+          },
+          stroke: {
+            curve: "smooth"
+          },
+          title: {
+            text: "Pedidos",
+            align: "left"
+          },
+          grid: {
+            borderColor: "#e7e7e7",
+            row: {
+              colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+              opacity: 0.5
+            }
+          },
+          markers: {
+            size: 1
+          },
+          xaxis: {
+            categories: d[1],
+            title: {
+              text: "Data do vencimento"
+            }
+          },
+          yaxis: {
+            title: {
+              text: "Total"
+            },
+          },
+          legend: {
+            position: "top",
+            horizontalAlign: "right",
+            floating: true,
+            offsetY: -25,
+            offsetX: -5
+          }
+        };
+      })
+  }
 
   ngOnInit() {
-    this.chartOptions = {
-      chart: {
-        type: 'area'
-      },
-      title: {
-        text: 'Gráfico'
-      },
-      subtitle: {
-        text: 'Total de pagamentos, adiantamentos e prestação de contas'
-      },
-      tooltip: {
-        split: true,
-        valueSuffix: ' Reais'
-      },
-      credits: {
-        enabled: false
-      },
-      exporting: {
-        enabled: true,
-      },
-      // series: this.data
-      series: [{
-        name: 'Pagamentos',
-        data: [32000.00, 40386.00, 22310.00, 39200.00, 19900.00]
-        }, {
-        name: 'Adiantamentos',
-        data: [14000.00, 6360.00, 2310.00, 9200.00, 1900.00]
-      }, {
-        name: 'Prestação de Contas',
-        data: [2000.00, 3860.00, 2310.00, 3200.00, 1900.00]
-      }]
-    };
+    }
 
-    HC_exporting(Highcharts);
+  logicaDash(data){
+    // Lets
+    let categories = []
+    let finalData = {}
 
-    setTimeout(() => {
-      window.dispatchEvent(
-        new Event('resize')
-      );
-    }, 300);
+// Create basic structure
+    for(let n = 0; n <= data.length-1; n++){
+      let r = data[n]
+
+      let t = r[0]
+      let d = r[1]
+      let c = r[2]
+
+      categories.push(d)
+
+      if(!finalData[t]){
+        finalData[t] = {}
+      }
+
+      finalData[t][d] = c
+    }
+//
+
+// Unique dates
+    let uniqueCategories = Array.from(new Set(categories).values())
+//
+
+// Fill if 0 when data not exist
+    for(let n = 0; n <= uniqueCategories.length-1; n++){
+      let d0 = uniqueCategories[n]
+
+      for (let d1 in finalData) {
+        if(!finalData[d1][d0]){
+          finalData[d1][d0] = 0
+        }
+      }
+    }
+//
+
+// Final graphic data
+    let graphicData = []
+
+    for(let d in finalData){
+      let f = {
+        "name": d,
+        "data": []
+      }
+
+      for(let n = 0; n <= uniqueCategories.length-1; n++){
+        f["data"].push(finalData[d][uniqueCategories[n]])
+      }
+
+      graphicData.push(f)
+    }
+
+    let humanData = []
+
+    for(let n in uniqueCategories){
+      humanData.push(uniqueCategories[n].split("T")[0])
+    }
+
+    return [graphicData, humanData];
   }
 
 }
