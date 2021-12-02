@@ -86,7 +86,7 @@
           <td> <span class="statusPrestacao">{{s.tipoStatusAdto ? s.tipoStatusAdto.nomeStatus : ""}}</span> </td>
           <td>
             <div>
-              <button type="button" class="btn btn-info btn-sm" style="font-size: 11px; width: 62px"
+              <button *ngIf="s.tipoPedido.id == 2" type="button" class="btn btn-info btn-sm" style="font-size: 11px; width: 62px"
                       (click)="trocaStatusAdto(s.id, 2)"
                       [disabled]="(!botaoPrestacaoAtivo) || (s.tipoStatusAdto.id == 2)">
                 Prestar Contas
