@@ -65,4 +65,8 @@ export class PagamentosService {
     return this.http.delete<any>(`http://localhost:8080/api/pagamentos/${pagamento.id}`);
   }
 
+  dashboard(): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/pagamentos/dashboard`);
+  }
+
 }
