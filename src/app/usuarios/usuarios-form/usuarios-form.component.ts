@@ -57,7 +57,7 @@ export class UsuariosFormComponent implements OnInit {
         this.area = '';
       }, errorResponse => {
         this.mensagemSucesso = null;
-        this.menssagemErro = "Esse usuário já possui login!"
+        this.menssagemErro = "Está faltando informações no cadastro ou esse usuário já possui login!"
         return this.menssagemErro;
       });
   }
