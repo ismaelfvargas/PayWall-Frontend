@@ -13,12 +13,12 @@
           </div>
           Home
         </a>
-        <div class="sb-sidenav-menu-heading">Solicitações</div>
-        <a class="nav-link" routerLink="/pagamento-form">
+        <div class="sb-sidenav-menu-heading" *ngIf="!permissaoAdministrador">Solicitações</div>
+        <a class="nav-link" routerLink="/pagamento-form" *ngIf="!permissaoAdministrador">
           <div class="sb-nav-link-icon"><i class="fas fa-file-invoice-dollar"></i></div>
           Formulário de Solicitação
         </a>
-        <a class="nav-link" routerLink="/pagamento-lista-users">
+        <a class="nav-link" routerLink="/pagamento-lista-users" *ngIf="!permissaoAdministrador">
           <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
           Minhas Solicitações
         </a>
@@ -29,7 +29,7 @@
 <!--        </a>-->
         <div class="sb-sidenav-menu-heading" *ngIf="permissaoUsuario">Gerencial</div>
         <div class="sb-sidenav-menu-heading" *ngIf="permissaoAssistente">Financeiro/Contábil</div>
-        <a class="nav-link" routerLink="/usuarios-form" *ngIf="permissaoUsuario">
+        <a class="nav-link" routerLink="/usuarios-form" *ngIf="permissaoAdministrador">
           <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
           Criar Usuários
         </a>
@@ -37,7 +37,7 @@
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
           Dashboards
         </a>
-        <a class="nav-link" routerLink="/pagamento-listagem" *ngIf="permissaoUsuario || permissaoAssistente">
+        <a class="nav-link" routerLink="/pagamento-listagem" *ngIf="((permissaoUsuario || permissaoAssistente) && !permissaoAdministrador)">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Consulta de Solicitações
         </a>

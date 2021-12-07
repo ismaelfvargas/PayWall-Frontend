@@ -11,6 +11,7 @@ export class SidebarComponent implements OnInit {
   usuarioLogado: string;
   permissaoUsuario: boolean;
   permissaoAssistente: boolean;
+  permissaoAdministrador: boolean;
 
   constructor(
     private authService: AuthService
@@ -20,7 +21,7 @@ export class SidebarComponent implements OnInit {
     this.usuarioLogado = this.authService.getUsuarioAutenticado();
     this.permissaoUsuario = false;
     this.permissaoAssistenteTeste();
-    console.log(this.permissaoAssistente);
+    this.permissaoAdministradorTeste();
     this.authService
       .permissaoUsuariosMenu()
       .subscribe(response => {
@@ -35,6 +36,16 @@ export class SidebarComponent implements OnInit {
       .permissaoUsuarioAssistente()
       .subscribe(response => {
         this.permissaoAssistente = true;
+      })
+  }
+
+  permissaoAdministradorTeste(): void {
+    this.usuarioLogado = this.authService.getUsuarioAutenticado();
+    this.permissaoAdministrador = false;
+    this.authService
+      .permissaoUsuarioAdministrador()
+      .subscribe(response => {
+        this.permissaoAdministrador = true;
       })
   }
 
